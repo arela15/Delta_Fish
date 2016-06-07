@@ -1,0 +1,45 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+            <div class="col s12 m12">
+              {% if g.user.is_authenticated %}
+                
+                <h5>Usted es el usuario: {{ g.user.nickname}}</h5>
+                <table>
+                  <thead>
+                    <tr>
+                      <th data-field="nombre">Producto</th>
+                      <th data-field="cantidad">Cantidad</th>
+                      <th data-field="precioP">Precio Pieza</th>
+                      <th data-field="precioN">Precio Neto</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  
+
+                  {% for producto in productos %}
+                    <tr>
+                        <td>{{producto[1]}}</td>
+                        <td>{{producto[2]}}</td>
+                        <td>{{producto[3]}}</td>
+                        <td>{{producto[4]}}</td>
+                        <td></td>
+                    </tr>
+                  {% endfor %}                
+
+                </tbody>
+                </table>
+
+                <!--- <h3>Total a pagar:</h3> -->
+
+
+            {% endif %}
+            
+                <a href="/productos" class="waves-effect waves-light btn-large red">Continuar comprando</a>
+                <a href="/productos" class="waves-effect waves-light btn-large red">Realizar compra</a>
+            </div>
+    </div>
+    
+{% endblock %}

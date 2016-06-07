@@ -1,0 +1,19 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+
+	<div class="row">
+		<div class="col s12 m4 offset-m4">
+			<img src="/static/images/logo.jpg" class="responsive-img">
+		</div>
+	</div>		
+	{% if g.user.is_authenticated %}	
+	<h3>Bienvenido {{ g.user.nickname}}!</h3>
+	{% else%}
+	<h3>Es necesario registrarse para ver esta página</h3>
+	{% endif%}
+	<div class="card-panel">
+      <a href="/productos" class="blue-text text-darken-2">Ver catalogo de productos</a>
+    </div>
+{% endblock %}

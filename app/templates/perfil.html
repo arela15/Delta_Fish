@@ -1,0 +1,27 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+<h3>{{ g.user.nickname}}</h3>
+<h3>Aqui puedes cambiar los datos de tu perfil</h3>
+
+<form action="" method="post" name="registro">
+    {{ form.hidden_tag() }}
+
+    <p>
+        {{ form.password.label }}{{ form.password(size=20) }}<br>
+        {% for error in form.password.errors %}
+          <span style="color: red;">[{{error}}]</span>
+        {% endfor %}<br>
+    </p>
+
+    <p>
+        {{ form.email.label }}{{ form.email(size=20) }}<br>
+        {% for error in form.email.errors %}
+          <span style="color: red;">[{{error}}]</span>
+        {% endfor %}<br>
+    </p>
+
+    <p><input type="submit" value="Actualizar datos"></p>
+</form>
+{% endblock %}

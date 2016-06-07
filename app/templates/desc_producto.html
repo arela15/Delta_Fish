@@ -1,0 +1,38 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+
+            <div class="col s12 m6 offset-m3">
+                <div class="card  large">
+                    <div class="card-image">
+                        <img src="{{ url_for('static', filename='images/productos/' + producto.foto) }}" />
+                        <span class="card-title">{{producto.nombre}}</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="col s12 m12">
+                            <p><strong>Descripción:</strong> {{producto.descripcion}}</p>
+                            <p><strong>Precio:</strong> {{producto.precio}}</p>
+                            <p><strong>Stock:</strong> {{producto.inventario}}</p>                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <div class="col s12 m3">
+                <form action="/agregar/{{producto.id}}" method="post">
+                    {{ form.hidden_tag() }}
+                    <div class="col s12 m12">
+                        {{ form.cantidad.label }}{{ form.cantidad(size=5) }}
+                    </div>
+
+                    <div class="col s12 m12">
+                        <button class="waves-effect waves-light btn red" type="submit" name="action"><i class="material-icons right">shopping_cart</i>Añadir carrito</a> </button>
+                            <!--    <button class="btn" > <i class="material-icons">shopping_cart</i></button> -->
+                    </div>
+                </form>
+             </div>
+    </div>
+    
+{% endblock %}

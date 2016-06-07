@@ -1,0 +1,35 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+
+
+
+        {% for producto in productos %}
+            {% if producto.inventario > 0 %}  <!-- Con esto solo mostramos los productos que tengan stock -->
+
+                <div class="col s12 m4"> <!-- esta declaración dice, en movil 1 sola imagen, en tablet y desktop 3 imagenes -->
+                    <div class="card medium">
+                        <div class="card-image">
+                            <img src="{{ url_for('static', filename='images/productos/' + producto.foto) }}" />
+                            <span class="card-title">{{producto.nombre}}</span>
+                        </div>
+                        <div class="card-content">
+                            <p><strong>Descripción:</strong> {{producto.descripcion}}</p>
+                            <p><strong>Precio:</strong> {{producto.precio}}</p>
+                            <p><strong>Stock:</strong> {{producto.inventario}}</p>
+                        </div>
+                        <br>
+                        <div class="card-action">
+                          
+                            <a href="/productos/{{producto.id}}" class="waves-effect waves-light btn red">Ver más</a>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+        {% endfor%}
+
+    </div>
+{% endblock %}
